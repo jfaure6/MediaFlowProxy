@@ -7,7 +7,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y git
 
 # Clone the repository
-RUN git clone https://github.com/jfaure6/MediaFlowProxy .
+RUN git clone https://github.com/jfaure6/MediaFlowProxy.git .
 
 # Copy the local config.json file to the container
 
@@ -15,7 +15,7 @@ RUN git clone https://github.com/jfaure6/MediaFlowProxy .
 RUN pip install --no-cache-dir -r requirements.txt
 
 
-EXPOSE 8888
+EXPOSE 8080
 
 # Run run.py when the container launches
-CMD ["uvicorn", "run:main_app", "--host", "0.0.0.0", "--port", "8888", "--workers", "4"]
+CMD ["uvicorn", "run:main_app", "--host", "0.0.0.0", "--port", "8080", "--workers", "4"]
